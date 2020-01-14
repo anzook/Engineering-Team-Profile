@@ -1,18 +1,20 @@
 const inquirer = require('inquirer');
 const fs = require("fs");
-const util = require("util");
+// const util = require("util");
 
+//local requirements in the form of constructors
 const Eng = require("./lib/engineer");
 const Mgr = require("./lib/manager");
 const Stu = require("./lib/intern");
 const pageGen = require("./lib/pageGen");
 
+//initialize team array and counter for IDs
 let team = [];
 let empIdnum = 100;
 
 function promptUser() {
     console.log("Welcome - Please begin building your team below...");
-
+//build starts with team manager
     inquirer.prompt([
         {
             name: "name",
@@ -29,15 +31,21 @@ function promptUser() {
         }
     ])
         .then(function (answer) {
+            //makes an ID in the form of 'M100' or 'E102' depending on role and team size
             empID = "M" + empIdnum;
+            //build new manager with constructor
             let emp = new Mgr(answer.name, empID, answer.email, answer.office)
+            //add to the employee id counter
             empIdnum++;
+            //add employee to array
             team.push(emp);
+            //continue to next function
             addEmp();
         });
 }
 
 function addEmp() {
+    //allows user to add additional team members or quit and build report
     inquirer.prompt(
         {
             name: "action",
@@ -59,10 +67,11 @@ function addEmp() {
                 }, {
                     name: "github",
                     type: "input",
-                    message: "Engineer's Github profile?",
+                    message: "Engineer's Github profile ID?",
                 }
             ])
                 .then(function (answer) {
+                    //see manager for employee creation notes
                         empID = "E" + empIdnum;
                         let emp = new Eng(answer.name, empID, answer.email, answer.github);
                     empIdnum++;
@@ -97,9 +106,10 @@ function addEmp() {
 
         }
         if (answer.action === "Done") {
+            //calls function to build report passing the built array of employees
             let html = pageGen.pageGen(team);
 
-            // await writeFileAsync("./output/team.html", html);
+            //writes report to output
             fs.writeFile("./output/team.html", html, function(err) {
 
                 if (err) {
@@ -115,5 +125,5 @@ function addEmp() {
 
     });
 }
-
+//initializes program run
 promptUser();

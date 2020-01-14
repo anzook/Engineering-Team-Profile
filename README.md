@@ -1,70 +1,40 @@
 # Engineering-Team-Profile
-CLI app to organize your dev team
+### CLI app to organize your dev team
 
-Classes
-The project must have the these classes: Employee, Manager, Engineer,
-Intern. The tests for these classes in the tests directory must all pass.
-The first class is an Employee parent class with the following properties and
-methods:
+This is a basic cli-app using node to construct an engineering team profile as an html file. Additionally, it is a way to practice test-driven development.
 
-name
-id
-title
-getName()
-getId()
-getEmail()
-getRole() // Returns 'Employee'
+# Design Notes
 
-The other three classes will extend Employee.
-In addition to Employee's properties and methods, Manager will also have:
+Inputs and Outputs -
+The app prompts the user to build an engineering team, which consists of a manager, and any number of engineers and interns. Then the app generates a team.html page in the output directory with the team roster.
 
+The format for the constructors was set by the given test conditions, listed in the /test folder. Each employee has a name, id, title, and a special property given the role.
 
-officeNumber
+## Viewing and using the website
 
+Download the repo.
 
-getRole() // Overridden to return 'Manager'
+Install the node dependencies:
+`npm instal`
+* inquirer _for cli interface_
+* jest _for testing constructors_
 
+ and then initalize the app by running:
+`node app.js`
 
-In addition to Employee's properties and methods, Engineer will also have:
+Here is an example of the html formatted output created as /output/team.html:
+![Mainpage Screenshot Demo](/assets/Team_Profile_Demo.png)
 
 
-github  // GitHub username
+The 'High Scores' button toggles the display card of scores.
+
+All website assets are contained within the repo (https://github.com/anzook/Engineering-Team-Profile)
 
 
-getGithub()
+## Acknowledgements and Credits
 
-
-getRole() // Overridden to return 'Engineer'
-
-
-In addition to Employee's properties and methods, Intern will also have:
-
-
-school
-
-
-getSchool()
-
-
-getRole() // Overridden to return 'Intern'
-
-
-
-User input
-The project must prompt the user to build an engineering team. An engineering
-team consists of a manager, and any number of engineers and interns.
-
-Roster output
-The project must generate a team.html page in the output directory, that displays a nicely formatted team roster. Each team member should display the following in no particular order:
-
-
-Name
-
-
-Role
-
-
-ID
-
-
-Role-specific property (School, link to GitHub profile, or office number)
+Website created as an assignment for the Johns Hopkins full-stack web development bootcamp (in partnership with Trilogy Education Services).
+Guidance and assistance provided by:
+* Stetson Lewis (Instructor)
+* Donald Hesler (TA)
+* Dan Thareja (Inspiration)
