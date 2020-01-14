@@ -26,8 +26,6 @@ Here is an example of the html formatted output created as /output/team.html:
 ![Mainpage Screenshot Demo](/assets/Team_Profile_Demo.png)
 
 
-The 'High Scores' button toggles the display card of scores.
-
 All website assets are contained within the repo (https://github.com/anzook/Engineering-Team-Profile)
 
 
